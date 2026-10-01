@@ -1,0 +1,8 @@
+{"data": {"posReceiptDetails": {"id": "RCPT-1", "memberId": "0",
+  "products": [
+    {"id": 555001, "quantity": 1, "name": "TESTMERK HV MELK", "price": {"amount": 1.19}, "amount": {"amount": 1.19}},
+    {"id": 555002, "quantity": 2, "name": "BROOD", "price": {"amount": 2.00}, "amount": {"amount": 4.00}}
+  ],
+  "discounts": [{"name": "TESTMERK", "amount": {"amount": -0.50}}, {"name": "MIJN AH MILES", "amount": {"amount": -1.00}}],
+  "payments": [{"method": "PINNEN", "amount": {"amount": 12.34}}]
+}}}

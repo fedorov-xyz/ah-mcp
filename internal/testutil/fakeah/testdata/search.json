@@ -1,0 +1,81 @@
+{
+  "products": [
+    {
+      "webshopId": 100001,
+      "title": "Testmerk Halfvolle melk",
+      "brand": "Testmerk",
+      "salesUnitSize": "1 l",
+      "currentPrice": 1.19,
+      "priceBeforeBonus": 1.19,
+      "isBonus": false,
+      "mainCategory": "Zuivel",
+      "availableOnline": true,
+      "isOrderable": true,
+      "isPreviouslyBought": true,
+      "nutriscore": "B"
+    },
+    {
+      "webshopId": 100002,
+      "title": "Voorbeeld Volle melk",
+      "brand": "Voorbeeld",
+      "salesUnitSize": "1 l",
+      "currentPrice": 0.99,
+      "priceBeforeBonus": 1.39,
+      "isBonus": true,
+      "bonusMechanism": "2e halve prijs",
+      "mainCategory": "Zuivel",
+      "availableOnline": true,
+      "isOrderable": true,
+      "bonusStartDate": "2026-09-28",
+      "bonusEndDate": "2999-12-31",
+      "promotionType": "NATIONAL",
+      "discountLabels": [
+        {
+          "code": "DISCOUNT_ONE_HALF_PRICE",
+          "defaultDescription": "2e halve prijs",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "webshopId": 100003,
+      "title": "Fictief Karnemelk",
+      "brand": "Fictief",
+      "salesUnitSize": "1 l",
+      "currentPrice": 2.49,
+      "priceBeforeBonus": 2.49,
+      "isBonus": false,
+      "mainCategory": "Zuivel",
+      "availableOnline": true,
+      "isOrderable": true
+    },
+    {
+      "webshopId": 609662,
+      "title": "Fictief Biologisch halfvolle melk 4-pack",
+      "brand": "Fictief",
+      "salesUnitSize": "4 x 1 l",
+      "currentPrice": 5.98,
+      "priceBeforeBonus": 7.16,
+      "isBonus": true,
+      "bonusMechanism": "",
+      "mainCategory": "Zuivel",
+      "availableOnline": true,
+      "isOrderable": true,
+      "discountLabels": [
+        {
+          "code": "DISCOUNT_BUNDLE",
+          "defaultDescription": "pakketkorting"
+        }
+      ],
+      "bonusStartDate": "2026-10-01",
+      "bonusEndDate": "2026-10-04",
+      "promotionType": "AHONLINE"
+    }
+  ],
+  "page": {
+    "number": 0,
+    "size": 4,
+    "totalElements": 4,
+    "totalPages": 1
+  }
+}

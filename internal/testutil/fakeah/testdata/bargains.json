@@ -1,0 +1,5 @@
+{"data": {"bargainItems": [
+  {"product": {"id": 100003, "title": "Fictief Karnemelk", "brand": "Fictief", "salesUnitSize": "1 l"}, "categoryTitle": "Zuivel",
+   "markdown": {"markdownType": "PERCENTAGE", "markdownExpirationDate": "2099-01-01", "markdownPercentage": 35}, "stock": 3,
+   "bargainPrice": {"priceWas": "2.49", "priceNow": "1.62"}}
+]}}

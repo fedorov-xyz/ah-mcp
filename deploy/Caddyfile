@@ -1,0 +1,12 @@
+# Example Caddy front for ah-mcp.
+# - TLS certificates are obtained and renewed automatically.
+# - flush_interval -1 keeps MCP Streamable HTTP (SSE) responses unbuffered.
+# - Caddy has no read/write timeout on proxied streams by default, so long
+#   /mcp streams are not cut; keep it that way if you add timeouts.
+# - Caddy sets X-Forwarded-For; if ah-mcp runs on the same host, set
+#   AH_MCP_TRUSTED_PROXIES=127.0.0.1/32 so rate limiting sees the real client IP.
+ah-mcp.example.com {
+	reverse_proxy 127.0.0.1:3000 {
+		flush_interval -1
+	}
+}

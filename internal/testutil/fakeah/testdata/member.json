@@ -1,0 +1,3 @@
+{"data": {"member": {"id": 4242, "emailAddress": "EMAIL", "name": {"first": "Test", "last": "Gebruiker"},
+  "address": {"street": "Voorbeeldstraat", "houseNumber": 1, "postalCode": "1011AA", "city": "Testdam", "countryCode": "NL"},
+  "cards": {"bonus": "2620000000017", "gall": "", "airmiles": ""}}}}

@@ -1,0 +1,7 @@
+{
+  "sectionType": "PERSONAL",
+  "bonusGroupOrProducts": [
+    {"product": {"webshopId": 100003, "title": "Fictief Karnemelk", "currentPrice": 1.99, "priceBeforeBonus": 2.49, "bonusMechanism": "voor 1.99", "activationStatus": "ACTIVATABLE"}},
+    {"bonusGroup": {"id": "PSEG-9", "segmentDescription": "Alle Voorbeeld koffie", "discountDescription": "30% korting", "exampleFromPrice": 5.00, "exampleForPrice": 3.50, "activationStatus": "ACTIVATED"}}
+  ]
+}

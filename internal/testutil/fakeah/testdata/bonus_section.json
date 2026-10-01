@@ -1,0 +1,63 @@
+{
+  "sectionType": "NATIONAL",
+  "bonusGroupOrProducts": [
+    {
+      "product": {
+        "webshopId": 100002,
+        "title": "Voorbeeld Volle melk",
+        "salesUnitSize": "1 l",
+        "currentPrice": 0,
+        "priceBeforeBonus": 1.4,
+        "bonusMechanism": "2e halve prijs",
+        "discountLabels": [
+          {
+            "code": "DISCOUNT_ONE_HALF_PRICE",
+            "defaultDescription": "2e halve prijs",
+            "count": 2
+          }
+        ]
+      }
+    },
+    {
+      "product": {
+        "webshopId": 200001,
+        "title": "Fictief Lasagne all'uovo",
+        "salesUnitSize": "500 g",
+        "currentPrice": 1.5,
+        "priceBeforeBonus": 2.0,
+        "bonusMechanism": "25% korting",
+        "discountLabels": [
+          {
+            "code": "DISCOUNT_PERCENTAGE",
+            "defaultDescription": "25% korting",
+            "percentage": 25
+          }
+        ]
+      }
+    },
+    {
+      "bonusGroup": {
+        "id": "SEG-1",
+        "segmentDescription": "Alle Testmerk yoghurt",
+        "discountDescription": "1+1 gratis",
+        "exampleFromPrice": 2.0,
+        "exampleForPrice": 0,
+        "discountLabels": [
+          {
+            "code": "DISCOUNT_X_PLUS_Y_FREE",
+            "defaultDescription": "1+1 gratis",
+            "count": 1,
+            "freeCount": 1
+          }
+        ],
+        "exceptionRule": "*M.u.v. Biologisch",
+        "extraDescriptions": [
+          "*M.u.v. Biologisch",
+          "Korting wordt verrekend bij afrekenen"
+        ],
+        "storeOnlyPromotion": true,
+        "isStapelBonus": false
+      }
+    }
+  ]
+}

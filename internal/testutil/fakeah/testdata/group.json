@@ -1,0 +1,65 @@
+{
+ "data": {
+  "bonusPromotions": [
+   {
+    "id": "SEG-1",
+    "title": "Alle Testmerk yoghurt",
+    "productCount": 2,
+    "products": [
+     {
+      "id": 300001,
+      "title": "Testmerk Yoghurt naturel",
+      "brand": "Testmerk",
+      "category": "Zuivel",
+      "salesUnitSize": "500 g",
+      "availability": {
+       "isOrderable": true
+      },
+      "priceV2": {
+       "now": {
+        "amount": 1.0
+       },
+       "was": {
+        "amount": 2.0
+       },
+       "promotionLabel": {
+        "tiers": [
+         {
+          "mechanism": "X_PLUS_Y_FREE",
+          "description": "1+1 gratis"
+         }
+        ]
+       }
+      }
+     },
+     {
+      "id": 300002,
+      "title": "Testmerk Yoghurt Grieks",
+      "brand": "Testmerk",
+      "category": "Zuivel",
+      "salesUnitSize": "500 g",
+      "availability": {
+       "isOrderable": true
+      },
+      "priceV2": {
+       "now": {
+        "amount": 1.5
+       },
+       "was": {
+        "amount": 1.5
+       },
+       "promotionLabel": {
+        "tiers": [
+         {
+          "mechanism": "X_PLUS_Y_FREE",
+          "description": "1+1 gratis"
+         }
+        ]
+       }
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

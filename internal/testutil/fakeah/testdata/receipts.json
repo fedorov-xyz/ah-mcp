@@ -1,0 +1,4 @@
+{"data": {"posReceiptsPage": {"posReceipts": [
+  {"id": "RCPT-1", "dateTime": "DATE_RECENTT10:15:00Z", "totalAmount": {"amount": 12.34}},
+  {"id": "RCPT-0", "dateTime": "2000-01-01T10:00:00Z", "totalAmount": {"amount": 5.00}}
+]}}}

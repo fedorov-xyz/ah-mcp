@@ -1,0 +1,36 @@
+version: 2
+updates:
+  - package-ecosystem: gomod
+    directory: /
+    schedule:
+      interval: weekly
+    # Only propose versions that have been out for at least 7 days.
+    cooldown:
+      default-days: 7
+    groups:
+      gomod:
+        patterns: ["*"]
+        exclude-patterns: ["github.com/gwillem/appie-go"]
+    # appie-go is pinned to a main pseudo-version on purpose; bump it by hand
+    # after reviewing upstream (see UPSTREAM.md).
+    ignore:
+      - dependency-name: github.com/gwillem/appie-go
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    # Only propose versions that have been out for at least 7 days.
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns: ["*"]
+
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    # Only propose versions that have been out for at least 7 days.
+    cooldown:
+      default-days: 7

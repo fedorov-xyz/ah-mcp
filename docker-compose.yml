@@ -1,0 +1,28 @@
+# Quick start:
+#   cp .env.example .env
+#   openssl rand -base64 32   # paste into AH_MCP_SECRET_KEY in .env
+#   docker compose up -d
+#
+# The server keeps no persistent state: no volume is needed (or wanted).
+services:
+  ah-mcp:
+    image: ghcr.io/fedorov-xyz/ah-mcp:latest
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      # Loopback only: put a TLS reverse proxy (deploy/Caddyfile) in front.
+      - "127.0.0.1:3000:3000"
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "/ah-mcp", "healthcheck"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3

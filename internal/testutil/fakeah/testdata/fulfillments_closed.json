@@ -1,0 +1,4 @@
+{"data": {"orderFulfillments": {"result": [
+  {"orderId": 9001, "statusDescription": "Bezorgd", "shoppingType": "DELIVERY", "totalPrice": {"totalPrice": {"amount": 42.10}, "discount": {"amount": -3.20}}, "delivery": {"status": "DELIVERED", "slot": {"date": "DATE_RECENT", "dateDisplay": "recent", "timeDisplay": "18:00 - 20:00"}}},
+  {"orderId": 9000, "statusDescription": "Bezorgd", "shoppingType": "DELIVERY", "totalPrice": {"totalPrice": {"amount": 38.00}, "discount": {"amount": -1.00}}, "delivery": {"status": "DELIVERED", "slot": {"date": "DATE_OLDER", "dateDisplay": "older", "timeDisplay": "18:00 - 20:00"}}}
+]}}}

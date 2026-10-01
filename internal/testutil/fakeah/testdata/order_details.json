@@ -1,0 +1,14 @@
+{
+  "orderId": 0,
+  "orderState": "DELIVERED",
+  "deliveryDate": "DATE_RECENT",
+  "groupedProductsInTaxonomy": [
+    {"taxonomyName": "Zuivel", "orderedProducts": [
+      {"amount": 1, "quantity": 2, "product": {"webshopId": 100001, "title": "Testmerk Halfvolle melk", "priceBeforeBonus": 1.19, "currentPrice": 1.19}},
+      {"amount": 1, "quantity": 1, "product": {"webshopId": 100002, "title": "Voorbeeld Volle melk", "priceBeforeBonus": 1.40, "currentPrice": 0.99}}
+    ]},
+    {"taxonomyName": "Pasta", "orderedProducts": [
+      {"amount": 1, "quantity": 1, "product": {"webshopId": 200002, "title": "Grand Testo Lasagne all'uovo", "priceBeforeBonus": 2.29}}
+    ]}
+  ]
+}

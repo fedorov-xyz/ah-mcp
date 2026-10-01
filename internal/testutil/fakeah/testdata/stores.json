@@ -1,0 +1,3 @@
+{"data": {"storesSearch": {"result": [
+  {"id": 1234, "name": "AH Voorbeeldstraat", "storeType": "REGULAR", "address": {"street": "Voorbeeldstraat", "houseNumber": "1", "postalCode": "1011AA", "city": "Testdam"}}
+]}}}

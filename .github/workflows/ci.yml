@@ -1,0 +1,95 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test:
+    name: lint & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-go@v7.0.0
+        with:
+          go-version-file: go.mod
+
+      - name: gofmt
+        run: |
+          unformatted="$(gofmt -l .)"
+          if [ -n "$unformatted" ]; then
+            echo "These files are not gofmt-formatted:"
+            echo "$unformatted"
+            exit 1
+          fi
+
+      - name: go vet
+        run: go vet ./...
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v9.3.0
+        with:
+          version: v2.14.0
+          # Prebuilt golangci-lint binaries are built with an older Go and refuse
+          # to lint a module targeting a newer one; build it with our toolchain.
+          install-mode: goinstall
+
+      - name: go test -race
+        run: go test -race ./...
+
+      - name: govulncheck
+        env:
+          GOTOOLCHAIN: local # use the go.mod Go version installed by setup-go
+        run: go run golang.org/x/vuln/cmd/govulncheck@latest ./...
+
+  docker:
+    name: docker build & smoke
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: docker/setup-buildx-action@v4.4.1
+
+      - name: Build image (linux/amd64, no push)
+        uses: docker/build-push-action@v7.4.0
+        with:
+          context: .
+          platforms: linux/amd64
+          load: true
+          push: false
+          tags: ah-mcp:ci
+          build-args: |
+            VERSION=ci
+            COMMIT=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run container
+        run: |
+          key="$(openssl rand -base64 32)"
+          docker run -d --name ah-mcp \
+            --read-only --tmpfs /tmp \
+            -p 3000:3000 \
+            -e AH_MCP_SECRET_KEY="$key" \
+            -e AH_MCP_BASE_URL=http://localhost:3000 \
+            ah-mcp:ci
+
+      - name: Smoke test
+        run: scripts/smoke.sh http://localhost:3000
+
+      - name: Container logs
+        if: always()
+        run: docker logs ah-mcp || true
