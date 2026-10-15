@@ -119,10 +119,12 @@ account; see [Known gaps](#known-gaps) for what is still unverified.
 
 ## Kubernetes notes
 
-- Run **one Deployment with 1 replica**, or more replicas with **sticky sessions
-  for `/oauth/*`** at the Ingress. Pending sign-ins and authorization codes live
-  in memory for at most 10 minutes; everything else (`/mcp`, refresh) is
-  stateless and works on any replica.
+- Run **one Deployment with 1 replica**, or more replicas with **sticky
+  sessions** (cookie affinity) at the Ingress. Pending sign-ins and
+  authorization codes live in memory for at most 10 minutes, and during a
+  sign-in the AH login page is relayed from the *root* of the domain (any path
+  carrying the `ahmcp_login` cookie), not only from `/oauth/*`. Everything else
+  (`/mcp`, refresh) is stateless and works on any replica.
 - Put `AH_MCP_SECRET_KEY` in a **Secret** and mount it as an environment
   variable. All replicas must share the same key.
 - **Ingress → port 3000 with TLS.** Use `/healthz` for both readiness and
@@ -130,6 +132,11 @@ account; see [Known gaps](#known-gaps) for what is still unverified.
 - **Disable proxy buffering and raise read timeouts for `/mcp`** — Streamable
   HTTP can hold responses open (ingress-nginx: `proxy-buffering: "off"`,
   `proxy-read-timeout: "3600"`).
+- **Raise the response header buffer.** The relayed AH login page sends about
+  4.5 KB of headers (CSP and several cookies); ingress-nginx's default 4 KB
+  buffer turns that into a `502 Bad Gateway` on `/login` ("upstream sent too
+  big header" in the controller log). Set
+  `nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"`.
 - Set **`AH_MCP_TRUSTED_PROXIES`** to the ingress controller's pod CIDR so the
   OAuth rate limiter sees real client IPs; otherwise all traffic shares one bucket.
 - Security context: `readOnlyRootFilesystem: true`, `runAsNonRoot: true`
@@ -390,6 +397,11 @@ cookies, login sids or emails).
   also block AH's bot-protection scripts (requests under
   `/akam/…` fail with `ERR_BLOCKED_BY_CLIENT`); allow the site or
   use a clean browser profile.
+- **`502 Bad Gateway` on `/login` behind nginx.** The AH login page's response
+  headers do not fit nginx's default 4 KB buffer. Raise `proxy_buffer_size`
+  (ingress-nginx: `nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"`).
+  If ah-mcp itself cannot reach AH, its log shows
+  `login proxy upstream error` instead.
 - **Streaming cut off / requests hang.** A proxy buffers or times out
   `/mcp`. Disable buffering (`flush_interval -1` in Caddy, `proxy-buffering off`
   in nginx) and raise read timeouts.
