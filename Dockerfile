@@ -3,7 +3,7 @@
 # ---- build -----------------------------------------------------------------
 # Runs on the build host's native platform and cross-compiles for the target
 # (no QEMU needed for Go).
-FROM --platform=$BUILDPLATFORM golang:1.27.1 AS build
+FROM --platform=$BUILDPLATFORM golang:1.27.2 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
